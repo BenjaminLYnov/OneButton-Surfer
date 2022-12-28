@@ -8,12 +8,11 @@ public class PlayerMove : MonoBehaviour
     public float speed = 5.0f;
     public float m_Thrust = 20f;
     public int dirLateral = 1;
+    public int hp = 3;
+    public GameObject pika;
+    public GameObject sphere;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     void Update()
@@ -22,13 +21,6 @@ public class PlayerMove : MonoBehaviour
         {
             AddForceLateral();
         }
-
-        // if (Input.GetKeyUp(KeyCode.Z))
-        // {
-        //     test++;
-        //     print(test);
-        // }
-
     }
 
     private void FixedUpdate()
@@ -39,6 +31,7 @@ public class PlayerMove : MonoBehaviour
     private void MoveForward()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        pika.transform.position = new Vector3(sphere.transform.position.x + 0.008f, sphere.transform.position.y - 0.244f, sphere.transform.position.z - 0.519f);
     }
 
     private void AddForceLateral()
@@ -47,14 +40,9 @@ public class PlayerMove : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Wall")
-        {
-            // Game Over
-            print("Game Over");
-        }
-    }
+
+
+
 
 
 
